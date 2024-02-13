@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 
 package com.mycompany.miniprojetopoo;
@@ -9,13 +5,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Collections;
 import java.util.Comparator;
-/**
- *
- * @author Acer
- */
+
 public class Campeonato {
-    ArrayList<Clube> clubes = new ArrayList();
-    String nome_campeonato;
+    public ArrayList<Clube> clubes = new ArrayList();
+    public String nome_campeonato;
    
     
     

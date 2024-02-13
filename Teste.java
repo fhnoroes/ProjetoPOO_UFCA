@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.miniprojetopoo;
 
-/**
- *
- * @author Acer
- */
+
 public class Teste {
      public static void main (String [ ] args){
          Clube f = new Clube("Flamengo");
@@ -21,8 +15,8 @@ public class Teste {
          camp.adicionar_clube(p);
          camp.adicionar_clube(c);
          camp.mostrar_clube(); 
-        camp.jogar_campeonato();
-        camp.getClassificacao();
+         camp.jogar_campeonato();
+         camp.getClassificacao();
 
       
     }
