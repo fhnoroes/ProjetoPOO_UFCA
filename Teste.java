@@ -21,10 +21,8 @@ public class Teste {
          camp.adicionar_clube(p);
          camp.adicionar_clube(c);
          camp.mostrar_clube(); 
-
-         
-         
         camp.jogar_campeonato();
+        camp.getClassificacao();
 
       
     }

@@ -35,4 +35,11 @@ public class Clube {
         this.saldo_gols += saldo_jogo;
         
     }
+    
+    public int getPontos(){
+        return this.pontos_clube;
+    }
+    public int getSaldo(){
+        return this.saldo_gols;
+    }
 }

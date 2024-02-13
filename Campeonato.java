@@ -7,6 +7,8 @@
 package com.mycompany.miniprojetopoo;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Collections;
+import java.util.Comparator;
 /**
  *
  * @author Acer
@@ -14,7 +16,7 @@ import java.util.Random;
 public class Campeonato {
     ArrayList<Clube> clubes = new ArrayList();
     String nome_campeonato;
-    ArrayList<Clube> classiclubes = new ArrayList();
+   
     
     
     public Campeonato(String nome_campeonato){
@@ -37,7 +39,7 @@ public class Campeonato {
         }
     }
     }
-     public void jogar_partida(Clube m, Clube v){
+     private void jogar_partida(Clube m, Clube v){
          Random aleatorio = new Random();
          int golm = aleatorio.nextInt(5);
          int golv = aleatorio.nextInt(5);
@@ -123,46 +125,14 @@ public class Campeonato {
         }
      }
      
-     private void getClassificacao(){
-        int tamanhoLista = this.clubes.size();
-        for(int i=0;i<tamanhoLista;i++){
-            //verifica se é a primeira ocorrência e adiciona o elemento na classificação
-            if(i==0){
-                this.classiclubes.add(this.clubes.get(i)); 
-            }else{
-               int tamanhoLista2 = this.classiclubes.size();
-               //usei j=tamanhoLista2 e x=tamanhoLista2 para sair dos loopins dos for
-               for(int j = 0;j<tamanhoLista2;j++){
-                   //verifica se a pontuação do clube é maior do que o que está na classificação
-                   if(this.clubes.get(i).pontos_clube>this.classiclubes.get(j).pontos_clube){
-                        this.classiclubes.add(j,this.clubes.get(i)); 
-                        j = tamanhoLista2;
-                   //validação para caso a pontuação seja igual do que o que já está adicionado na classificação
-                   }else if(this.clubes.get(i).pontos_clube==this.classiclubes.get(j).pontos_clube ){
-                       for(int x=j;x<tamanhoLista2;x++){
-                           //no caso de pontuação igual verifica se o saldo de gols é maior ou igual a algum elemento que vem depois
-                           if(this.clubes.get(i).saldo_gols>this.classiclubes.get(x).saldo_gols || this.clubes.get(i).saldo_gols==this.classiclubes.get(j).saldo_gols){
-                           this.classiclubes.add(x,this.clubes.get(i)); 
-                           x = tamanhoLista2;
-                           j = tamanhoLista2; 
-                           //em caso de ser o último elemento e não ter ninguém com saldo menor ou igual, adiciona no final da classifição
-                           }else if(x==tamanhoLista2-1){
-                               this.classiclubes.add(this.clubes.get(i));
-                               j = tamanhoLista2; 
-                           }
-                       }
-                   //verifica se o clube adicionado é o último e tem uma pontuação menor do que o que está na classificação
-                   }else if(this.clubes.get(i).pontos_clube<this.classiclubes.get(j).pontos_clube && j==tamanhoLista2-1){
-                       this.classiclubes.add(this.clubes.get(i));
-                   }
-               }
-            }
-     }
+     public void getClassificacao(){
+         
+       Collections.sort(this.clubes,Comparator.comparing(Clube::getPontos).thenComparingInt(Clube::getSaldo).reversed());
        int cont = 0; 
        System.out.println("\n");
        System.out.println("Classificação "+this.nome_campeonato);
        System.out.println("-------------------------------------------");
-       for (Clube clube: classiclubes) {
+       for (Clube clube: clubes) {
             cont++;
             System.out.println(cont+"º "+clube.nome_clube+" -- "+"pts."+clube.pontos_clube+" -- "+"saldo."+clube.saldo_gols);
         } 
